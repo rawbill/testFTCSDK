@@ -19,6 +19,7 @@ import com.qualcomm.robotcore.hardware.IMU;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AngularVelocity;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
+import org.firstinspires.ftc.teamcode.RoadRunner.Localizer;
 import org.firstinspires.ftc.teamcode.RoadRunner.messages.TwoDeadWheelInputsMessage;
 
 @Config
@@ -42,14 +43,11 @@ public final class TwoDeadWheelLocalizer implements Localizer {
     private boolean initialized;
 
     public TwoDeadWheelLocalizer(HardwareMap hardwareMap, IMU imu, double inPerTick) {
-        // TODO: make sure your config has **motors** with these names (or change them)
-        //   the encoders should be plugged into the slot matching the named motor
-        //   see https://ftc-docs.firstinspires.org/en/latest/hardware_and_software_configuration/configuring/index.html
+
         par = new OverflowEncoder(new RawEncoder(hardwareMap.get(DcMotorEx.class, "par")));
         perp = new OverflowEncoder(new RawEncoder(hardwareMap.get(DcMotorEx.class, "perp")));
 
-        // TODO: reverse encoder directions if needed
-        //   par.setDirection(DcMotorSimple.Direction.REVERSE);
+
 
         this.imu = imu;
 
